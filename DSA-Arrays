@@ -1,0 +1,54 @@
+1.  I couldn't do this one.
+2.  a.  Array is length 1, capacity 3, at pointer 0.
+    b.  After running those commands, array is length 6, capacity 12, at
+        pointer 3.
+        What happened?
+        The Array.SIZE_RATIO was defined as 3.  So when the array was
+        created by pushing the 3 to it, an array of 1 item was established
+        at pointer 0 and given a capacity of 3.
+        The 5 and 15 were also pushed to the array.  At this time the array
+        was not moved as the array was not over capacity.
+        When the 19 was pushed, the array would reach size 4.  There is
+        still plenty of room in our 1024-size memory to find another
+        spot that could fit this, so the memory allocated our array a new
+        spot at the next available pointer, 3 (0, 1, and 2 were
+        allocated for this array previously).  As our SIZE_RATIO is *3,
+        the memory was allocated with a capacity of 12 - 4 for the current
+        array size, times 3 for the SIZE_RATIO.
+        Two more items were then pushed to this array, increasing its size
+        to 6.  It was not moved either time because it was under capacity.
+3.  Array is length 3, capacity 12, at pointer 3.
+    What happened?
+    After our story above in 2b., we ran 3 pops.  Each time the last
+    element in the array was removed and the length of the array was
+    reduced by 1.  The result is the array being shortened from 6
+    items to 3, thus length 3.  Its capacity and address are unchanged.
+4.  a.  console.log(memory.get(0)) printed a 3.
+    b.  Done.
+    c.  The result was NaN.  Perhaps the "Float64Array" can't hold a
+        string.
+    d.  _resize is supposed to copy the array onto a new pointer if
+        it doesn't have enough capacity to hold a newly pushed item.
+5.  
+6.
+7.
+8.
+9.  
+function removeChar (string, chars) {
+  let newString = "";
+  for (i = 0; i < string.length; i++) {
+    let currentChar = string.charAt(i);
+    console.log("CurrentChar:" + currentChar);
+    let isVowel = chars.includes(currentChar);
+    console.log("IsVowel:" + isVowel);
+      if (!isVowel) {
+        newString += currentChar;
+      }
+  }
+  console.log(newString);
+  return newString;
+}
+
+removeChar("Doesn't matter", "aeiou")
+
+10. 
